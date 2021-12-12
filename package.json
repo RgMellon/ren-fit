@@ -5,9 +5,11 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
+    "@types/jest": "^27.0.3",
     "axios": "0.21.1",
     "date-fns": "^2.27.0",
     "expo": "~43.0.2",
