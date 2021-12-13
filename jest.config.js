@@ -1,5 +1,8 @@
 module.exports = {
   preset: "jest-expo",
-  setupFilesAfterEnv: ["@testing-library/jest-native/extend-expect"],
   testPathIgnorePatterns: ["/node_modules/", "/documentation/"],
+  setupFilesAfterEnv: [
+    "@testing-library/jest-native/extend-expect",
+    "jest-styled-components",
+  ],
 };
