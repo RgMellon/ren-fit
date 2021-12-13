@@ -8,4 +8,9 @@ export default {
     light_detail: "#0cbefb",
     strong_detail: "#ee8392",
   },
+  fonts: {
+    regular: "Poppins_400Regular",
+    medium: "Poppins_500Medium",
+    bold: "Poppins_700Bold",
+  },
 };
