@@ -13,6 +13,7 @@ import {
 import { Home } from "./src/screens/Home";
 
 import theme from "./src/global/styles/theme";
+import { SafeAreaView } from "react-native";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,8 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="auto" />
+      <StatusBar translucent />
+
       <Home />
     </ThemeProvider>
   );

@@ -6,7 +6,7 @@ import * as S from "./styles";
 export function Home() {
   return (
     <S.Container>
-      <StepCount />
+      <StepCount amountSteps="3000" />
     </S.Container>
   );
 }
