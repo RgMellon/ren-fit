@@ -11,6 +11,8 @@ export const Container = styled.View`
 
     flex-direction: row;
     align-items: center;
+
+    margin-top: 20px;
   `}
 `;
 
@@ -28,9 +30,9 @@ export const LeftContent = styled.View`
 
 export const AmountStepsUntilNow = styled.Text`
   ${({ theme }) => css`
-    font-size: 20px;
+    font-size: 12px;
     color: ${theme.colors.text};
-    font-family: ${theme.fonts.bold};
+    font-family: ${theme.fonts.regular};
   `}
 `;
 
@@ -39,7 +41,7 @@ export const StepsGoal = styled.Text`
     font-size: 12px;
     color: ${theme.colors.primary};
     font-family: ${theme.fonts.regular};
-    margin-top: 8px;
+    /* margin-top: 8px; */
   `}
 `;
 
@@ -50,6 +52,9 @@ export const ContentStepData = styled.View`
 export const ContentRight = styled.View`
   width: 60%;
   height: 100%;
+
+  justify-content: center;
+  align-items: flex-end;
 `;
 
 export const ProgressBar = styled.View`

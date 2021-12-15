@@ -18,14 +18,17 @@ export function StepCount({ amountSteps }: StepCountProps) {
 
         <S.ContentStepData>
           <S.AmountStepsUntilNow>{amountSteps}</S.AmountStepsUntilNow>
-          <S.StepsGoal>/{GOAL}</S.StepsGoal>
+          <S.StepsGoal> /6000</S.StepsGoal>
         </S.ContentStepData>
       </S.LeftContent>
 
       <S.ContentRight>
         <S.AmountStepsUntilNow>{progressValue}%</S.AmountStepsUntilNow>
         <S.ProgressBar>
-          <S.ProgressBarValue progressValue={progressValue} />
+          <S.ProgressBarValue
+            testID="progress-value"
+            progressValue={progressValue}
+          />
         </S.ProgressBar>
       </S.ContentRight>
     </S.Container>
