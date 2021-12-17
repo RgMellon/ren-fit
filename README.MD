@@ -111,6 +111,24 @@ _Response_
 }
 ```
 
+### POntos de cardio
+
+_Responsavel por pegar os pontos de cardios por determinada data_
+https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate
+
+```json
+{
+  "aggregateBy": [
+    {
+      "dataTypeName": "com.google.heart_minutes"
+    }
+  ],
+  "bucketByTime": { "durationMillis": 86400000 },
+  "startTimeMillis": 1636426800000,
+  "endTimeMillis": 1639018800000
+}
+```
+
 ONDE PAREI => DOC DATATYPE
 https://developers.google.com/fit/datatypes#rest
 

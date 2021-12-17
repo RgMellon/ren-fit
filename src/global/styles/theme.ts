@@ -8,6 +8,10 @@ export default {
 
     light_detail: "#0cbefb",
     strong_detail: "#ee8392",
+
+    primary_rgb: "rgb(81, 66, 171)",
+
+    highlight_rgb: "rgb(255, 131, 84)",
   },
   fonts: {
     regular: "Poppins_400Regular",

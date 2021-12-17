@@ -8,9 +8,17 @@ type SimpleCardProps = {
   title: string;
   icon?: string;
   value: string;
+  colorIcon?: string;
+  sufix: string;
 };
 
-export function SimpleCard({ title, icon, value }: SimpleCardProps) {
+export function SimpleCard({
+  title,
+  icon,
+  value,
+  colorIcon = "#ff8354",
+  sufix,
+}: SimpleCardProps) {
   // const theme = useTheme();
 
   return (
@@ -21,13 +29,13 @@ export function SimpleCard({ title, icon, value }: SimpleCardProps) {
           testID="icon-card"
           name={icon}
           size={14}
-          color="#ff8354"
+          color={colorIcon}
         />
       </S.Header>
 
       <S.Content>
         <S.Value>{value}</S.Value>
-        <S.Info>Kcal</S.Info>
+        <S.Info>{sufix}</S.Info>
       </S.Content>
     </S.Container>
   );

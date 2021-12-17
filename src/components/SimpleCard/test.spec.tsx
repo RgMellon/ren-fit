@@ -12,7 +12,7 @@ jest.mock("@expo/vector-icons/FontAwesome", () => "Icon");
 describe("SimpleCard", () => {
   it("should render the title passed to params", () => {
     const { getByText } = renderWithTeme(
-      <SimpleCard title="any_title" value="any_value" icon="burn" />
+      <SimpleCard title="any_title" value="any_value" icon="burn" sufix="KM" />
     );
 
     const title = getByText("any_title");
@@ -21,43 +21,48 @@ describe("SimpleCard", () => {
   });
 
   it("shoul render the icon when passed to params", () => {
-    const { getByTestId, debug } = renderWithTeme(
-      <SimpleCard title="any_title" value="any_value" icon="burn" />
+    const { getByTestId } = renderWithTeme(
+      <SimpleCard title="any_title" value="any_value" icon="burn" sufix="KM" />
     );
 
     const icon = getByTestId(/icon-card/);
 
     expect(icon.props.name).toEqual("burn");
   });
-  // it("Should render the amount steps when passing to params", () => {
-  //   const { getByText } = renderWithTeme(<StepCount amountSteps="4" />);
 
-  //   const amountSteps = getByText("4");
+  it("shoul render the right icon color when passed to params ", () => {
+    const { getByTestId } = renderWithTeme(
+      <SimpleCard
+        title="any_title"
+        value="any_value"
+        icon="burn"
+        colorIcon="#dddd"
+        sufix="KM"
+      />
+    );
 
-  //   expect(amountSteps).toBeTruthy();
-  // });
+    const icon = getByTestId(/icon-card/);
 
-  // it("Should render the goal of the steps", () => {
-  //   const { getByText } = renderWithTeme(<StepCount amountSteps="4" />);
+    expect(icon.props.color).toEqual("#dddd");
+  });
 
-  //   const goal = getByText(/6000/);
+  it("shoul render the default icon color when not passed to params", () => {
+    const { getByTestId } = renderWithTeme(
+      <SimpleCard title="any_title" value="any_value" icon="burn" sufix="KM" />
+    );
 
-  //   expect(goal).toBeTruthy();
-  // });
+    const icon = getByTestId(/icon-card/);
 
-  // it("Should render the right percentagem", () => {
-  //   const { getByText } = renderWithTeme(<StepCount amountSteps="3000" />);
+    expect(icon.props.color).toEqual("#ff8354");
+  });
 
-  //   const percentageSteps = getByText(/50%/);
+  it("shoul render the sufix passed to params", () => {
+    const { getByText } = renderWithTeme(
+      <SimpleCard title="any_title" value="any_value" icon="burn" sufix="KM" />
+    );
 
-  //   expect(percentageSteps).toBeTruthy();
-  // });
+    const sufix = getByText(/KM/);
 
-  // it("Should render stepBar with the same percentage of steps", () => {
-  //   const { getByTestId } = renderWithTeme(<StepCount amountSteps="3000" />);
-
-  //   const progressBarValue = getByTestId(/progress-value/i);
-
-  //   expect(progressBarValue.props.style[0].width).toEqual("50%");
-  // });
+    expect(sufix).toBeTruthy();
+  });
 });
