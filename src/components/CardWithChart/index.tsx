@@ -2,15 +2,22 @@ import React from "react";
 
 import * as S from "./styles";
 
-import { LineChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
+import { LineChart } from "react-native-chart-kit";
 
-type CardWithChartProps = {
-  data: {
-    title: string;
-    subtitle: string;
-    chartColor: number[];
-  };
+export type Props = {
+  title: string;
+  subtitle: string;
+  chartColor: "primary" | "highlight";
+};
+
+export type CardWithChartProps = {
+  data: Props;
+};
+
+const customizedLineChartModifier = {
+  primary: (opacity: number) => `81, 66, 171, ${opacity}`,
+  highlight: (opacity: number) => `255, 131, 84, ${opacity}`,
 };
 
 export function CardWithChart({ data }: CardWithChartProps) {
@@ -21,7 +28,7 @@ export function CardWithChart({ data }: CardWithChartProps) {
         <S.SubTitle>{data.subtitle}</S.SubTitle>
       </S.LeftSide>
 
-      <S.RightSide>
+      <S.RightSide testID="chart">
         <LineChart
           data={{
             labels: ["D", "S", "T", "Q", "Q", "S", "S"],
@@ -39,11 +46,6 @@ export function CardWithChart({ data }: CardWithChartProps) {
               },
             ],
           }}
-          width={Dimensions.get("window").width * 0.54}
-          height={180}
-          withOuterLines={false}
-          withShadow={false}
-          withHorizontalLabels={false}
           chartConfig={{
             backgroundColor: "#fff",
             backgroundGradientFrom: "#fff",
@@ -52,20 +54,18 @@ export function CardWithChart({ data }: CardWithChartProps) {
               stroke: "#fff",
             },
             color: (opacity = 1) =>
-              `rgba(${data.chartColor[0]}, ${data.chartColor[1]}, ${data.chartColor[2]}, ${opacity})`,
+              `rgba(${customizedLineChartModifier[data.chartColor](opacity)})`,
+            labelColor: () => `#DEDBEF`,
             style: {
               borderRadius: 16,
             },
           }}
+          width={Dimensions.get("window").width * 0.54}
+          height={180}
+          withOuterLines={false}
+          withShadow={false}
+          withHorizontalLabels={false}
           bezier
-          style={{
-            justifyContent: "center",
-
-            paddingRight: 10,
-
-            marginVertical: 8,
-            borderRadius: 16,
-          }}
         />
       </S.RightSide>
     </S.Container>

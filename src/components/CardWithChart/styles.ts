@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components/native";
 
+import { LineChart } from "react-native-chart-kit";
+
 export const Container = styled.View`
   ${({ theme }) => css`
     border-radius: 8px;
@@ -37,4 +39,10 @@ export const LeftSide = styled.View`
 export const RightSide = styled.View`
   width: 65%;
   justify-content: center;
+`;
+
+export const CustomizedLineChart = styled(LineChart).attrs((props) => ({}))`
+  justify-content: center;
+  padding-right: 1px;
+  border-radius: 16px;
 `;

@@ -1,7 +1,7 @@
 export default {
   colors: {
     background: "#fff",
-    detail: "#edebf7",
+    detail: "#DEDBEF",
     text: "#050617",
     primary: "#5142ab",
     highlight: "#ff8354",

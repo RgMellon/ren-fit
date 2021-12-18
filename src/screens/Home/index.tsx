@@ -1,23 +1,22 @@
 import React from "react";
 import { SimpleCard } from "../../components/SimpleCard";
 import { StepCount } from "../../components/StepCount";
-import { CardWithChart } from "../../components/CardWithChart";
+import { CardWithChart, Props } from "../../components/CardWithChart";
 
 import * as S from "./styles";
-import { Dimensions } from "react-native";
 
 const mockChartCard = [
   {
     title: "Passos",
     subtitle: "Últimos 7 dias",
-    chartColor: [255, 131, 84],
+    chartColor: "primary",
   },
   {
     title: "Calorias",
     subtitle: "Últimos 7 dias",
-    chartColor: [81, 66, 171],
+    chartColor: "highlight",
   },
-];
+] as Props[];
 
 export function Home() {
   return (
