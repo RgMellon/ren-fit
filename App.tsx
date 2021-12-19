@@ -14,6 +14,7 @@ import { Home } from "./src/screens/Home";
 
 import theme from "./src/global/styles/theme";
 import { SafeAreaView } from "react-native";
+import { Login } from "./src/screens/auth/Login";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,7 +31,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <StatusBar translucent />
 
-      <Home />
+      <Login />
     </ThemeProvider>
   );
 }
