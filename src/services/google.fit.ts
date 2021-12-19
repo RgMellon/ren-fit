@@ -71,7 +71,7 @@ const getGoogleFitData = async (access_token: string) => {
 
     const bucket = response.data.bucket[0];
     const filteredResponse = filterResponse(bucket);
-    console.log(filteredResponse);
+    // console.log(filteredResponse);
 
     // console.log(JSON.stringify(filteredResponse));
   } catch (error) {

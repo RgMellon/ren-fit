@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.0",
+    "@react-native-async-storage/async-storage": "^1.15.14",
     "@types/jest": "^27.0.3",
     "axios": "0.21.1",
     "date-fns": "^2.27.0",
