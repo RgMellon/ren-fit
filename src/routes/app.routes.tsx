@@ -19,12 +19,12 @@ export function AppRoutes() {
         labelPosition: "beside-icon",
         style: {
           paddingVertical: Platform.OS === "ios" ? 20 : 0,
-          height: 88,
+          height: 60,
         },
       }}
     >
       <Screen
-        name="Home"
+        name="Dashboard"
         component={Home}
         options={{
           tabBarIcon: ({ size, color }) => (
@@ -36,23 +36,27 @@ export function AppRoutes() {
           ),
         }}
       />
-      {/* 
+
       <Screen
-        name="Cadastrar"
-        component={Register}
+        name="Perfil"
+        component={Home}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialIcons size={size} color={color} name="attach-money" />
+            <MaterialIcons size={size} color={color} name="person" />
           ),
         }}
-      /> */}
+      />
 
       {/* <Screen
-        name="Resumo"
-        component={Resume}
+        name="Home"
+        component={Home}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialIcons size={size} color={color} name="pie-chart" />
+            <MaterialIcons
+              size={size}
+              color={color}
+              name="format-list-bulleted"
+            />
           ),
         }}
       /> */}

@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import React from "react";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
@@ -9,8 +10,6 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-
-import { Home } from "./src/screens/Home";
 
 import theme from "./src/global/styles/theme";
 
