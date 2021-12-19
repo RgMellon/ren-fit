@@ -14,12 +14,13 @@ export function AppRoutes() {
   return (
     <Navigator
       tabBarOptions={{
+        showLabel: false,
         activeTintColor: theme.colors.highlight,
-        inactiveTintColor: theme.colors.text,
-        labelPosition: "beside-icon",
+        inactiveTintColor: theme.colors.primary,
+
         style: {
           paddingVertical: Platform.OS === "ios" ? 20 : 0,
-          height: 60,
+          height: 50,
         },
       }}
     >
@@ -28,11 +29,7 @@ export function AppRoutes() {
         component={Home}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialIcons
-              size={size}
-              color={color}
-              name="format-list-bulleted"
-            />
+            <MaterialIcons size={size} color={color} name="bar-chart" />
           ),
         }}
       />

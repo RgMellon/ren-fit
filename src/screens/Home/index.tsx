@@ -1,5 +1,7 @@
 import React from "react";
+
 import { SimpleCard } from "../../components/SimpleCard";
+import { Header } from "../../components/Header";
 import { StepCount } from "../../components/StepCount";
 import { CardWithChart, Props } from "../../components/CardWithChart";
 
@@ -21,6 +23,7 @@ const mockChartCard = [
 export function Home() {
   return (
     <S.Container>
+      <Header />
       <StepCount amountSteps="3000" />
 
       <S.Wrapper>
