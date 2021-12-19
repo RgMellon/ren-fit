@@ -22,24 +22,9 @@ type AuthResponse = {
 export function Login() {
   const { signInWithGoogle } = useAuth();
 
-  async function googleLogin() {
+  async function handleGoogleSignIn() {
     try {
       signInWithGoogle();
-      // const CLIENT_ID =
-      //   "757452525938-6b8pismrpfocl340o9k2tq9fqab5tq36.apps.googleusercontent.com";
-      // const REDIRECT_URI = "https://auth.expo.io/@rgmellon/ren-fit";
-      // const RESPONSE_TYPE = "token";
-      // const SCOPE = encodeURI(
-      //   "https://www.googleapis.com/auth/fitness.sleep.read https://www.googleapis.com/auth/fitness.activity.read https://www.googleapis.com/auth/fitness.location.read https://www.googleapis.com/auth/fitness.blood_pressure.write profile email"
-      // );
-
-      // const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
-
-      // const { params } = (await AuthSession.startAsync({
-      //   authUrl,
-      // })) as AuthResponse;
-
-      // await getGoogleFitData(params.access_token);
     } catch (err) {
       console.log(err);
       Alert.alert("error");
@@ -60,7 +45,7 @@ export function Login() {
       </S.Content>
 
       <S.Bottom>
-        <S.Button onPress={googleLogin}>
+        <S.Button onPress={handleGoogleSignIn}>
           <S.ButtonText>Entrar</S.ButtonText>
         </S.Button>
       </S.Bottom>

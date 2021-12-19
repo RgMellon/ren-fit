@@ -14,8 +14,7 @@ import { Home } from "./src/screens/Home";
 
 import theme from "./src/global/styles/theme";
 
-import { Login } from "./src/screens/auth/Login";
-
+import { Routes } from "./src/routes";
 import AppProvider from "./src/hooks";
 
 export default function App() {
@@ -34,7 +33,7 @@ export default function App() {
       <StatusBar translucent />
 
       <AppProvider>
-        <Login />
+        <Routes />
       </AppProvider>
     </ThemeProvider>
   );
