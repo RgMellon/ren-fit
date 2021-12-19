@@ -41,9 +41,6 @@ const getGoogleFitData = async (access_token: string) => {
   const today = todayStart.getTime();
   const now = new Date().getTime();
 
-  // console.log("todayStart", todayStart.getTime());
-  // console.log("now", now);
-
   try {
     const params = {
       aggregateBy: [
