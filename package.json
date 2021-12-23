@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.0",
-    "@react-native-async-storage/async-storage": "^1.15.14",
+    "@react-native-async-storage/async-storage": "^1.13.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/native": "^5.9.4",
@@ -41,6 +41,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@testing-library/jest-native": "^4.0.4",
+    "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/react-native": "^9.0.0",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",

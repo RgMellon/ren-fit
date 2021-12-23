@@ -35,20 +35,6 @@ function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>({} as User);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function getLoggedUser() {
-      const loggedUser = await AsyncStorage.getItem("@renFit:user");
-
-      if (loggedUser) {
-        setUser(JSON.parse(loggedUser));
-      }
-
-      setLoading(false);
-    }
-
-    getLoggedUser();
-  }, []);
-
   async function signInWithGoogle() {
     try {
       const CLIENT_ID =
@@ -84,6 +70,20 @@ function AuthProvider({ children }: AuthProviderProps) {
     await AsyncStorage.removeItem("@renFit:user");
     setUser({} as User);
   }
+
+  async function getLoggedUser() {
+    const loggedUser = await AsyncStorage.getItem("@renFit:user");
+
+    if (loggedUser) {
+      setUser(JSON.parse(loggedUser));
+    }
+
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    getLoggedUser();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, signInWithGoogle, loading, signOut }}>
