@@ -1,35 +1,44 @@
-export const steps_dataSource_id =
-  "derived:com.google.step_count.delta:com.google.android.gms:merge_step_deltas";
+import {
+  calories_filter,
+  distance_filter,
+  steps_filter,
+  calories_dataSource_id,
+  steps_dataSource_id,
+  distance_dataSource_id,
+} from "./google-const";
 
-export const distance_dataSource_id =
-  "derived:com.google.distance.delta:com.google.android.gms:merge_distance_delta";
-
-export const calories_dataSource_id =
-  "derived:com.google.calories.expended:com.google.android.gms:merge_calories_expended";
-
-export const steps_filter =
-  "derived:com.google.step_count.delta:com.google.android.gms:aggregated";
-
-export const distance_filter =
-  "derived:com.google.distance.delta:com.google.android.gms:aggregated";
-
-export const calories_filter =
-  "derived:com.google.calories.expended:com.google.android.gms:aggregated";
-
-import { subHours, startOfDay, subDays } from "date-fns";
+import { startOfDay } from "date-fns";
 
 import { google_api } from "./google-fit-api";
 
-const filterResponse = (response) => {
-  const steps = response.dataset.filter(
+type ValueProps = {
+  intVal?: number;
+  fpVal: number;
+};
+
+type PointProps = {
+  value: ValueProps[];
+};
+
+type DataSetProps = {
+  dataSourceId: string;
+  point: PointProps[];
+};
+
+type BucketProps = {
+  dataset: DataSetProps[];
+};
+
+const filterResponse = (bucket: BucketProps) => {
+  const steps = bucket.dataset.filter(
     (data) => data.dataSourceId === steps_filter
   );
 
-  const distance = response.dataset.filter(
+  const distance = bucket.dataset.filter(
     (data) => data.dataSourceId === distance_filter
   );
 
-  const calories = response.dataset.filter(
+  const calories = bucket.dataset.filter(
     (data) => data.dataSourceId === calories_filter
   );
 
@@ -37,8 +46,6 @@ const filterResponse = (response) => {
 };
 
 const getActivitiesFromToday = async (access_token: string) => {
-  // console.tron.log(access_token);
-
   const todayStart = startOfDay(new Date());
   const today = todayStart.getTime();
   const now = new Date().getTime();
@@ -72,29 +79,31 @@ const getActivitiesFromToday = async (access_token: string) => {
     );
 
     const bucket = response.data.bucket[0];
+
     const filteredResponse = filterResponse(bucket);
 
     const stepValue = filteredResponse.steps[0].point[0].value[0].intVal;
 
     const distanceValue =
       filteredResponse.distance[0].point.length > 0
-        ? filteredResponse.distance[0].point[0].value[0].intVal
+        ? (filteredResponse.distance[0].point[0].value[0].fpVal / 1000).toFixed(
+            2
+          )
         : "0";
 
-    const caloriesValue =
-      filteredResponse.calories[0].point[0].value[0].fpVal.toFixed(2);
-
-    // console.log(filteredResponse);
+    const caloriesValue = (
+      filteredResponse.calories[0].point[0].value[0].fpVal / 1000
+    ).toFixed(3);
 
     // console.log(JSON.stringify(filteredResponse));
 
     return {
-      stepsAmount: stepValue,
-      distanceAmount: distanceValue,
+      stepsAmount: String(stepValue),
+      distanceAmount: String(distanceValue),
       caloriesAmount: caloriesValue,
     };
   } catch (error) {
-    throw new Error(error);
+    throw new Error(JSON.stringify(error));
   }
 };
 

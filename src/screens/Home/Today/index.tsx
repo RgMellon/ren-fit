@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Load } from "../../../components/Load";
 import { SimpleCard } from "../../../components/SimpleCard";
 
 import { StepCount } from "../../../components/StepCount";
 import { useAuth } from "../../../hooks/auth";
-import { getActivitiesFromToday } from "../../../services/google.fit";
+import { getActivitiesFromToday } from "../../../services/google-fit/activities-today";
 
 import * as S from "./styles";
 
@@ -16,6 +17,7 @@ type ActivitiesToday = {
 export function Today() {
   const { user } = useAuth();
 
+  const [load, setLoad] = useState(true);
   const [activityToday, setActivityToday] = useState({} as ActivitiesToday);
 
   useEffect(() => {
@@ -36,33 +38,41 @@ export function Today() {
       setActivityToday(activityData);
     } catch (err) {
       alert("ocorreu um erro ao recuperar os dados");
+    } finally {
+      setLoad(false);
     }
   }
 
   return (
-    <S.Container>
-      <StepCount amountSteps={activityToday.stepsAmount} />
+    <>
+      {load ? (
+        <Load />
+      ) : (
+        <S.Container>
+          <StepCount amountSteps={activityToday.stepsAmount} />
 
-      <S.Wrapper>
-        <S.ContentCard>
-          <SimpleCard
-            title="Calorias"
-            icon="burn"
-            value={activityToday.caloriesAmount}
-            sufix="Cal"
-          />
-        </S.ContentCard>
+          <S.Wrapper>
+            <S.ContentCard>
+              <SimpleCard
+                title="Calorias"
+                icon="burn"
+                value={activityToday.caloriesAmount}
+                sufix="Cal"
+              />
+            </S.ContentCard>
 
-        <S.ContentCard>
-          <SimpleCard
-            title="Distancia"
-            icon="walking"
-            colorIcon="#5142ab"
-            value={activityToday.distanceAmount}
-            sufix="KM"
-          />
-        </S.ContentCard>
-      </S.Wrapper>
-    </S.Container>
+            <S.ContentCard>
+              <SimpleCard
+                title="Distancia"
+                icon="walking"
+                colorIcon="#5142ab"
+                value={activityToday.distanceAmount}
+                sufix="KM"
+              />
+            </S.ContentCard>
+          </S.Wrapper>
+        </S.Container>
+      )}
+    </>
   );
 }

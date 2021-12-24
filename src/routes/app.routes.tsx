@@ -17,7 +17,7 @@ export function AppRoutes() {
       tabBarOptions={{
         showLabel: false,
         activeTintColor: theme.colors.highlight,
-        inactiveTintColor: theme.colors.primary,
+        inactiveTintColor: theme.colors.detail,
 
         style: {
           paddingVertical: Platform.OS === "ios" ? 20 : 0,

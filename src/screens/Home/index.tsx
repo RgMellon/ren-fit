@@ -7,6 +7,7 @@ import { CardWithChart, Props } from "../../components/CardWithChart";
 
 import * as S from "./styles";
 import { Today } from "./Today";
+import { Load } from "../../components/Load";
 
 const mockChartCard = [
   {
@@ -25,11 +26,8 @@ export function Home() {
   return (
     <S.Container>
       <Header />
-
       <Today />
-
       <CardWithChart data={mockChartCard[0]} />
-
       <CardWithChart data={mockChartCard[1]} />
     </S.Container>
   );
