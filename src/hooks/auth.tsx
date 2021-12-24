@@ -51,6 +51,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         authUrl,
       })) as AuthResponse;
 
+      console.log("type", type);
       if (type === "success") {
         const response = await fetch(
           `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`
