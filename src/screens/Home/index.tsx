@@ -6,6 +6,7 @@ import { StepCount } from "../../components/StepCount";
 import { CardWithChart, Props } from "../../components/CardWithChart";
 
 import * as S from "./styles";
+import { Today } from "./Today";
 
 const mockChartCard = [
   {
@@ -24,28 +25,8 @@ export function Home() {
   return (
     <S.Container>
       <Header />
-      <StepCount amountSteps="3000" />
 
-      <S.Wrapper>
-        <S.ContentCard>
-          <SimpleCard
-            title="Calorias"
-            icon="burn"
-            value={"450.75"}
-            sufix="Kcal"
-          />
-        </S.ContentCard>
-
-        <S.ContentCard>
-          <SimpleCard
-            title="Distancia"
-            icon="walking"
-            colorIcon="#5142ab"
-            value={"450.75"}
-            sufix="KM"
-          />
-        </S.ContentCard>
-      </S.Wrapper>
+      <Today />
 
       <CardWithChart data={mockChartCard[0]} />
 

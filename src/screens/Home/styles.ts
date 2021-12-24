@@ -12,13 +12,3 @@ export const Container = styled.ScrollView.attrs({
     padding-bottom: 200px;
   `}
 `;
-
-export const ContentCard = styled.View`
-  width: 48%;
-`;
-
-export const Wrapper = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 20px;
-`;

@@ -9,7 +9,7 @@ type StepCountProps = {
 const GOAL = 6000;
 
 export function StepCount({ amountSteps }: StepCountProps) {
-  const progressValue = (Number(amountSteps) / GOAL) * 100;
+  const progressValue = ((Number(amountSteps) / GOAL) * 100).toFixed(2);
 
   return (
     <S.Container>

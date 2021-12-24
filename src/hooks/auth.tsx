@@ -13,6 +13,7 @@ type User = {
   name: string;
   email: string;
   picture?: string;
+  access_token: string;
 };
 
 type AuthResponse = {
@@ -58,8 +59,16 @@ function AuthProvider({ children }: AuthProviderProps) {
 
         const userInfo = await response.json();
 
-        setUser(userInfo);
-        await AsyncStorage.setItem("@renFit:user", JSON.stringify(userInfo));
+        const userWIthAcessToken = {
+          ...userInfo,
+          access_token: params.access_token,
+        };
+
+        setUser(userWIthAcessToken);
+        await AsyncStorage.setItem(
+          "@renFit:user",
+          JSON.stringify(userWIthAcessToken)
+        );
       }
     } catch (err) {
       console.log("cai aquiii");

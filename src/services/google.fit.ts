@@ -36,7 +36,9 @@ const filterResponse = (response) => {
   return { steps, distance, calories };
 };
 
-const getGoogleFitData = async (access_token: string) => {
+const getActivitiesFromToday = async (access_token: string) => {
+  // console.tron.log(access_token);
+
   const todayStart = startOfDay(new Date());
   const today = todayStart.getTime();
   const now = new Date().getTime();
@@ -71,13 +73,29 @@ const getGoogleFitData = async (access_token: string) => {
 
     const bucket = response.data.bucket[0];
     const filteredResponse = filterResponse(bucket);
+
+    const stepValue = filteredResponse.steps[0].point[0].value[0].intVal;
+
+    const distanceValue =
+      filteredResponse.distance[0].point.length > 0
+        ? filteredResponse.distance[0].point[0].value[0].intVal
+        : "0";
+
+    const caloriesValue =
+      filteredResponse.calories[0].point[0].value[0].fpVal.toFixed(2);
+
     // console.log(filteredResponse);
 
     // console.log(JSON.stringify(filteredResponse));
+
+    return {
+      stepsAmount: stepValue,
+      distanceAmount: distanceValue,
+      caloriesAmount: caloriesValue,
+    };
   } catch (error) {
-    alert("err");
-    console.log(error.response);
+    throw new Error(error);
   }
 };
 
-export { getGoogleFitData };
+export { getActivitiesFromToday };

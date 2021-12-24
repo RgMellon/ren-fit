@@ -5,6 +5,7 @@ import { useTheme } from "styled-components";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Home } from "../screens/Home/index";
+import { Profile } from "../screens/Profile";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -36,7 +37,7 @@ export function AppRoutes() {
 
       <Screen
         name="Perfil"
-        component={Home}
+        component={Profile}
         options={{
           tabBarIcon: ({ size, color }) => (
             <MaterialIcons size={size} color={color} name="person" />

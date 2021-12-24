@@ -67,7 +67,7 @@ export const ProgressBar = styled.View`
 `;
 
 type ProgressValueType = {
-  progressValue: number;
+  progressValue: string;
 };
 
 export const ProgressBarValue = styled.View<ProgressValueType>`
