@@ -51,7 +51,6 @@ function AuthProvider({ children }: AuthProviderProps) {
         authUrl,
       })) as AuthResponse;
 
-      console.log("type", type);
       if (type === "success") {
         const response = await fetch(
           `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`
@@ -63,6 +62,8 @@ function AuthProvider({ children }: AuthProviderProps) {
         await AsyncStorage.setItem("@renFit:user", JSON.stringify(userInfo));
       }
     } catch (err) {
+      console.log("cai aquiii");
+      console.log(err);
       throw new Error(err);
     }
   }
