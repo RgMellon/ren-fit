@@ -2,7 +2,7 @@ import React from "react";
 
 import * as S from "./styles";
 
-import { Dimensions } from "react-native";
+import { Alert, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 export type Props = {
@@ -11,8 +11,14 @@ export type Props = {
   chartColor: "primary" | "highlight";
 };
 
+type ChartProps = {
+  day: string;
+  amount: number;
+};
+
 export type CardWithChartProps = {
   data: Props;
+  value: ChartProps[];
 };
 
 const customizedLineChartModifier = {
@@ -20,7 +26,7 @@ const customizedLineChartModifier = {
   highlight: (opacity: number) => `255, 131, 84, ${opacity}`,
 };
 
-export function CardWithChart({ data }: CardWithChartProps) {
+export function CardWithChart({ data, value }: CardWithChartProps) {
   return (
     <S.Container>
       <S.LeftSide>
@@ -31,18 +37,12 @@ export function CardWithChart({ data }: CardWithChartProps) {
       <S.RightSide testID="chart">
         <LineChart
           data={{
-            labels: ["D", "S", "T", "Q", "Q", "S", "S"],
+            labels: [...value.map((chartValue) => chartValue.day)],
             datasets: [
               {
-                data: [
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
-                ],
+                data: value.map((chartValue) =>
+                  Number(chartValue.amount.toFixed(2))
+                ),
               },
             ],
           }}
@@ -53,6 +53,7 @@ export function CardWithChart({ data }: CardWithChartProps) {
             propsForBackgroundLines: {
               stroke: "#fff",
             },
+
             color: (opacity = 1) =>
               `rgba(${customizedLineChartModifier[data.chartColor](opacity)})`,
             labelColor: () => `#DEDBEF`,
@@ -63,9 +64,14 @@ export function CardWithChart({ data }: CardWithChartProps) {
           width={Dimensions.get("window").width * 0.54}
           height={180}
           withOuterLines={false}
-          withShadow={false}
-          withHorizontalLabels={false}
+          withShadow={true}
           bezier
+          onDataPointClick={(pointData) => {
+            Alert.alert(
+              `Quantidade de ${data.title}`,
+              JSON.stringify(pointData.value)
+            );
+          }}
         />
       </S.RightSide>
     </S.Container>

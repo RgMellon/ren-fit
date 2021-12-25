@@ -8,7 +8,12 @@ import * as S from "./styles";
 export function Load() {
   return (
     <S.Container>
-      <LottieView autoPlay source={load} loop style={{ width: 250 }} />
+      <LottieView
+        autoPlay
+        source={load}
+        loop
+        style={{ width: 250, marginTop: 100 }}
+      />
     </S.Container>
   );
 }

@@ -15,3 +15,8 @@ export const distance_filter =
 
 export const calories_filter =
   "derived:com.google.calories.expended:com.google.android.gms:aggregated";
+
+// LAST WEEK;
+
+export const estimated_steps =
+  "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps";
