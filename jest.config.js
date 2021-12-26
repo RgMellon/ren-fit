@@ -13,3 +13,5 @@ module.exports = {
   ],
   coverageReporters: ["lcov"],
 };
+
+process.env.DISABLE_MOCKED_WARNING = true;

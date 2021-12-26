@@ -16,10 +16,51 @@ const mockChartCard = [
   },
 ] as Props[];
 
+type ChartProps = {
+  day: string;
+  amount: number;
+};
+
+const value = [
+  {
+    day: "D",
+    amount: 100,
+  },
+
+  {
+    day: "S",
+    amount: 33,
+  },
+  {
+    day: "T",
+    amount: 1,
+  },
+
+  {
+    day: "Q",
+    amount: 11,
+  },
+
+  {
+    day: "Q",
+    amount: 2,
+  },
+
+  {
+    day: "S",
+    amount: 33,
+  },
+
+  {
+    day: "S",
+    amount: 33,
+  },
+] as ChartProps[];
+
 describe("CardWithChat", () => {
   it("should render the title passed to params", () => {
     const { getByText } = renderWithTeme(
-      <CardWithChart data={mockChartCard[0]} />
+      <CardWithChart data={mockChartCard[0]} value={value} />
     );
 
     const title = getByText("Passos");
@@ -29,7 +70,7 @@ describe("CardWithChat", () => {
 
   it("should render the subtitle when passed to params", () => {
     const { getByText } = renderWithTeme(
-      <CardWithChart data={mockChartCard[0]} />
+      <CardWithChart data={mockChartCard[0]} value={value} />
     );
 
     const subtitle = getByText(/Últimos 7 dias/);
@@ -39,7 +80,7 @@ describe("CardWithChat", () => {
 
   it("should render the primary color on chart", () => {
     const { getByTestId } = renderWithTeme(
-      <CardWithChart data={mockChartCard[0]} />
+      <CardWithChart data={mockChartCard[0]} value={value} />
     );
 
     const chart = getByTestId("chart");
@@ -51,7 +92,7 @@ describe("CardWithChat", () => {
 
   it("should render the highlight color on chart", () => {
     const { getByTestId } = renderWithTeme(
-      <CardWithChart data={mockChartCard[1]} />
+      <CardWithChart data={mockChartCard[1]} value={value} />
     );
 
     const chart = getByTestId("chart");

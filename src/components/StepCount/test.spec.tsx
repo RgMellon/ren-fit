@@ -32,7 +32,7 @@ describe("StepCount", () => {
   it("Should render the right percentagem", () => {
     const { getByText } = renderWithTeme(<StepCount amountSteps="3000" />);
 
-    const percentageSteps = getByText(/50%/);
+    const percentageSteps = getByText(/50.00%/);
 
     expect(percentageSteps).toBeTruthy();
   });
@@ -42,6 +42,6 @@ describe("StepCount", () => {
 
     const progressBarValue = getByTestId(/progress-value/i);
 
-    expect(progressBarValue.props.style[0].width).toEqual("50%");
+    expect(progressBarValue.props.style[0].width).toEqual("50.00%");
   });
 });
