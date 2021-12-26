@@ -95,8 +95,6 @@ const getActivitiesFromToday = async (access_token: string) => {
       filteredResponse.calories[0].point[0].value[0].fpVal / 1000
     ).toFixed(3);
 
-    // console.log(JSON.stringify(filteredResponse));
-
     return {
       stepsAmount: String(stepValue),
       distanceAmount: String(distanceValue),
