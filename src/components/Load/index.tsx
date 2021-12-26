@@ -9,6 +9,7 @@ export function Load() {
   return (
     <S.Container>
       <LottieView
+        testID="load-animation"
         autoPlay
         source={load}
         loop
