@@ -37,6 +37,10 @@ export function Today() {
 
       setActivityToday(activityData);
     } catch (err) {
+      if (err.response.status === 401) {
+        alert("oi");
+        return;
+      }
       alert("ocorreu um erro ao recuperar os dados");
     } finally {
       setLoad(false);

@@ -35,44 +35,48 @@ export function CardWithChart({ data, value }: CardWithChartProps) {
       </S.LeftSide>
 
       <S.RightSide testID="chart">
-        <LineChart
-          data={{
-            labels: [...value.map((chartValue) => chartValue.day)],
-            datasets: [
-              {
-                data: value.map((chartValue) =>
-                  Number(chartValue.amount.toFixed(2))
-                ),
+        {!!value && value.length > 0 && (
+          <LineChart
+            data={{
+              labels: [...value.map((chartValue) => chartValue.day)],
+              datasets: [
+                {
+                  data: value.map((chartValue) =>
+                    Number(chartValue.amount.toFixed(2))
+                  ),
+                },
+              ],
+            }}
+            chartConfig={{
+              backgroundColor: "#fff",
+              backgroundGradientFrom: "#fff",
+              backgroundGradientTo: "#fff",
+              propsForBackgroundLines: {
+                stroke: "#fff",
               },
-            ],
-          }}
-          chartConfig={{
-            backgroundColor: "#fff",
-            backgroundGradientFrom: "#fff",
-            backgroundGradientTo: "#fff",
-            propsForBackgroundLines: {
-              stroke: "#fff",
-            },
 
-            color: (opacity = 1) =>
-              `rgba(${customizedLineChartModifier[data.chartColor](opacity)})`,
-            labelColor: () => `#DEDBEF`,
-            style: {
-              borderRadius: 16,
-            },
-          }}
-          width={Dimensions.get("window").width * 0.54}
-          height={180}
-          withOuterLines={false}
-          withShadow={true}
-          bezier
-          onDataPointClick={(pointData) => {
-            Alert.alert(
-              `Quantidade de ${data.title}`,
-              JSON.stringify(pointData.value)
-            );
-          }}
-        />
+              color: (opacity = 1) =>
+                `rgba(${customizedLineChartModifier[data.chartColor](
+                  opacity
+                )})`,
+              labelColor: () => `#DEDBEF`,
+              style: {
+                borderRadius: 16,
+              },
+            }}
+            width={Dimensions.get("window").width * 0.54}
+            height={180}
+            withOuterLines={false}
+            withShadow={true}
+            bezier
+            onDataPointClick={(pointData) => {
+              Alert.alert(
+                `Quantidade de ${data.title}`,
+                JSON.stringify(pointData.value)
+              );
+            }}
+          />
+        )}
       </S.RightSide>
     </S.Container>
   );

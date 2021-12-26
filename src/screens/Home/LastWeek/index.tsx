@@ -8,7 +8,6 @@ import {
 } from "../../../services/google-fit/activities-last-week";
 
 import { useAuth } from "../../../hooks/auth";
-import { useFocusEffect } from "@react-navigation/native";
 
 const chartConfig = [
   {

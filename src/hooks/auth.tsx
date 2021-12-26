@@ -23,14 +23,28 @@ type AuthResponse = {
   type: string;
 };
 
-type AuthContextData = {
+export type AuthContextData = {
   user: User;
   loading: boolean;
   signInWithGoogle(): Promise<void>;
   signOut(): Promise<void>;
 };
 
-const AuthContext = createContext({} as AuthContextData);
+export const AuthContextDefaultValues = {
+  user: {
+    id: "id",
+    email: "email",
+    name: "name",
+    access_token: "access_token",
+  },
+  loading: false,
+  signInWithGoogle: () => Promise.resolve().then(() => {}),
+  signOut: () => Promise.resolve().then(() => {}),
+};
+
+export const AuthContext = createContext<AuthContextData>(
+  AuthContextDefaultValues
+);
 
 function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>({} as User);
@@ -97,7 +111,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle, loading, signOut }}>
+    <AuthContext.Provider value={{ signInWithGoogle, signOut, user, loading }}>
       {children}
     </AuthContext.Provider>
   );

@@ -11,9 +11,9 @@ export function Header() {
     <S.Container>
       <S.Content>
         <S.Title>Suas Atividades</S.Title>
-        <S.SubTitle>Olá Renan, esse é seu resumo</S.SubTitle>
+        <S.SubTitle>Olá {user.name}, esse é seu resumo</S.SubTitle>
       </S.Content>
-      <S.Avatar source={{ uri: user.picture }} />
+      <S.Avatar accessibilityRole="image" source={{ uri: user.picture }} />
     </S.Container>
   );
 }
