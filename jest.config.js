@@ -8,6 +8,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     "src/**/*.tsx",
+    "src/services/google-fit/*.ts",
     "!src/**/*.spec.tsx",
     "!src/routes/*.tsx",
   ],

@@ -46,6 +46,8 @@ const filterResponse = (bucket: BucketProps) => {
 };
 
 const getActivitiesFromToday = async (access_token: string) => {
+  if (!access_token) throw new Error("access_token is necessary");
+
   const todayStart = startOfDay(new Date());
   const today = todayStart.getTime();
   const now = new Date().getTime();
