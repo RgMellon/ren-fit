@@ -17,6 +17,9 @@
 
 Projeto **RenFit**
 
+Projeto feito com o objetivo de fazer integração com os smart-watchs do mercado, para isso foi utilizado a api do google-fit para
+obter alguns dados relacionado a sáude.
+
 ---
 
 ## 📱 Preview do projeto
