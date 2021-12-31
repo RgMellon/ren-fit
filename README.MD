@@ -1,4 +1,78 @@
-https://developers.google.com/oauthplayground/?code=4/0AX4XfWjcsmmHxmWpBNf4ayWbMaBKuQlbsiRNHRUV-XVyQNpRhViRPQUsZ6oOUl_Sm0fi1w&scope=https://www.googleapis.com/auth/fitness.sleep.read%20https://www.googleapis.com/auth/fitness.activity.read%20https://www.googleapis.com/auth/fitness.location.read%20https://www.googleapis.com/auth/fitness.body.read%20https://www.googleapis.com/auth/fitness.nutrition.read%20https://www.googleapis.com/auth/fitness.blood_pressure.read%20https://www.googleapis.com/auth/fitness.oxygen_saturation.read%20https://www.googleapis.com/auth/fitness.blood_glucose.read%20https://www.googleapis.com/auth/fitness.body_temperature.read%20https://www.googleapis.com/auth/fitness.reproductive_health.read%20https://www.googleapis.com/auth/fitness.heart_rate.read
+<h1 align="center">
+  <img alt="Logo" src="https://i.imgur.com/m2og18C.jpg" width="100%">
+</h1>
+
+## Indice
+
+- [Sobre](#-sobre)
+- [Tecnologias utilizadas](#-tecnologias-utilizadas)
+- [Como baixar o projeto](#-como-baixar-o-projeto)
+- [Preview do projeto](#-preview-do-projeto)
+- [Funcionalidades](#-Funcionalidades)
+- [Download](#-Download)
+
+---
+
+## 🎧 Sobre
+
+Projeto **RenFit**
+
+---
+
+## 📱 Preview do projeto
+
+segue alguns prints do projeto
+
+<div>
+  <img style="margin: 5px" alt="login" src="https://i.imgur.com/CXedDQJ.jpg" width="200">
+
+  <img style="margin: 5px" alt="dashboard" src="https://i.imgur.com/qHYUUGN.jpg" width="200">
+
+</div>
+
+---
+
+## 💻 Tecnologias utilizadas
+
+O projeto foi feito utilizando das seguines tecnologias
+
+- React Native
+- Expo
+- Jest
+- Styled-Components
+- Typescript
+- React Hooks
+- Axios
+
+---
+
+## 📦 Como baixar o projeto
+
+```bash
+  #clonar o repositorio
+  $ git clone https://github.com/RgMellon/ren-fit
+
+  #entrar na pasta do projeto
+  $ cd ren-fit
+
+  #instalar as dependencias
+  $ yarn
+
+  #executar o projeto caso de android
+  $ expo start
+
+
+```
+
+---
+
+## 💻 Funcionalidades
+
+- Listagem dos seus dados diarios de saúde;
+
+- Listagem dos seus dados semanais;
+
+## ⬇ Doc da api
 
 API
 https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate
@@ -129,8 +203,4 @@ https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate
 }
 ```
 
-ONDE PAREI => DOC DATATYPE
-https://developers.google.com/fit/datatypes#rest
-
-LISTA DE TIPOS DE ATIVIDADE
-https://developers.google.com/fit/rest/v1/reference/activity-types
+Desenvolvido com ♥ por Renan Melo
