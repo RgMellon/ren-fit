@@ -85,9 +85,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         );
       }
     } catch (err) {
-      console.log("cai aquiii");
-      console.log(err);
-      throw new Error(err);
+      throw new Error(JSON.stringify(err));
     }
   }
 
